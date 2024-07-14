@@ -1,4 +1,12 @@
+import { Metadata } from 'next';
 import Navigation from '../components/navigation';
+
+export const metadata: Metadata = {
+  title: {
+    template: 'NextJS | %s',
+    default: 'NextJS',
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

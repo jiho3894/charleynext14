@@ -1,5 +1,3 @@
-import Navigation from '../../components/navigation';
-
 const myPage = () => {
   return (
     <>
