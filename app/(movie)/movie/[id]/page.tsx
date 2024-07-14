@@ -1,4 +1,6 @@
-import { API_URL } from '../page';
+import { Suspense } from 'react';
+import DetailMovie from '../../../../components/datail-movie';
+import DetailVideo from '../../../../components/detail-video';
 
 interface PageParamsProps {
   params: {
@@ -6,24 +8,18 @@ interface PageParamsProps {
   };
 }
 
-const getDetailMovie = async (id: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return await fetch(`${API_URL}/${id}`).then((response) => response.json());
-};
-
-const getDetailVideo = async (id: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return await fetch(`${API_URL}/${id}/videos`).then((response) => response.json());
-};
-
 const MovieDatail = async ({ params }: PageParamsProps) => {
-  const [movie, video] = await Promise.all([getDetailMovie(params.id), getDetailVideo(params.id)]);
-  console.log(movie, video);
   return (
     <div>
-      movie id : {movie.id} , movie title : {movie.original_title}
-      Movie Data: {JSON.stringify(movie)}
-      Video Data : {JSON.stringify(video)}
+      {/* suspense를 통해 data fetching 분리 가능 ( 없으면 모두 rendering 해야 페이지 노출) 
+      suspense 사용 시 loading 컴포넌트는 동작 안함
+      */}
+      <Suspense fallback={<div>movie loading...</div>}>
+        <DetailMovie id={params.id} />
+      </Suspense>
+      <Suspense fallback={<div>video loading...</div>}>
+        <DetailVideo id={params.id} />
+      </Suspense>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const API_URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
 
 const getMovies = async () => {
-  //await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return await fetch(API_URL).then((response) => response.json());
 };
 
