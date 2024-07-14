@@ -14,6 +14,9 @@ const Navigation = () => {
         <li>
           <Link href="/myPage">MyPage {pathName === '/myPage' && '^^'}</Link>
         </li>
+        <li>
+          <Link href="/list">List {pathName === '/list' && '^^'}</Link>
+        </li>
       </ul>
     </nav>
   );
