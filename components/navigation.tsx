@@ -17,6 +17,9 @@ const Navigation = () => {
         <li>
           <Link href="/list">List {pathName === '/list' && '^^'}</Link>
         </li>
+        <li>
+          <Link href="/shop">Shop {pathName === '/shop' && '^^'}</Link>
+        </li>
       </ul>
     </nav>
   );
